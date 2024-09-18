@@ -587,6 +587,12 @@ class WorkflowEngine {
       listener
     );
   }
+
+  async executeSingleBlock(blockInfo) {
+    const worker = new WorkflowWorker('single-worker', this);
+    const result = await worker.init({ singleBlockInfo: blockInfo });
+    return result;
+  }
 }
 
 export default WorkflowEngine;
